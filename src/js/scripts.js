@@ -1,7 +1,7 @@
 'use strict';
 (function() {
 var template = document.querySelector('template');
-var container = document.querySelector('.catalog');
+var container = document.querySelector('.catalog__cards');
 var pictures = [];
 
 function renderPictures(picturesArray) {
@@ -17,7 +17,7 @@ function renderPictures(picturesArray) {
 
 function getPictures() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '//home/mp/DEV/skorsky/src/content.json');
+    xhr.open('GET', '//poslavsky.github.io/content.json');
     xhr.onloadstart = function() {
       container.classList.add('pictures-loading');
     };
@@ -46,6 +46,7 @@ function getElementFromTemplate(data) {
     } else {
       element = template.children[0].cloneNode(true);
     }
+    element.querySelector('.catalog__card-title').textContent = data.brend;
     element.querySelector('.catalog__card-price').textContent = data.price;
     element.querySelector('.catalog__card-item--year').textContent = data.brend;
 
